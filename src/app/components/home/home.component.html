@@ -1,0 +1,19 @@
+<h2>Home</h2>
+
+<!-- custom pipe -->
+<p>Counter ^ 2 = {{homeCounter | power:2 }}</p>
+<p>Counter ^ 1 = {{homeCounter | power }}</p>
+
+<p>Price {{price | currency:'INR'}}</p>
+<p>Price number {{price | number:".3"}}</p>
+<p>Date {{today | date}}</p>
+<p>Date {{today | date: 'fullDate' | uppercase}}</p>
+
+<!-- (counterChange)="homeCounter = $event-->
+
+<app-counter *ngIf="show" 
+             [(counter)]="homeCounter"
+             (resetEvent)="resetHandler($event)"></app-counter>
+
+<button (click)="show = !show">Show/Hide</button>
+

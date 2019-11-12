@@ -1,0 +1,33 @@
+<h2>Product Edit - {{product.name}}</h2>
+
+<p *ngIf="productForm.invalid">Invalid form data</p>
+
+<form (ngSubmit)="save()" #productForm="ngForm">
+    Name
+    <input name="name"
+           [(ngModel)]="product.name"
+           required
+           minlength="4"
+           
+           #pname
+           #productName="ngModel">   
+           
+           <!-- angular automatically tests these & changes these in the css like ng-valid ng-dirty  -->
+    
+    <p *ngIf="productName.invalid">Incorrect Name</p>
+    
+    Price
+    <input name="price" 
+           [(ngModel)]="product.price">
+    Brand
+    <select name="brandId"
+            [(ngModel)]="product.brandId">
+
+            <option *ngFor="let brand of (brand$ | async)"
+                    [value]="brand.id">
+                {{brand.name}}
+            </option>
+    </select>
+
+    <button type="submit" [disabled]="productForm.invalid">Save</button>
+</form>

@@ -1,0 +1,22 @@
+<!--
+    Observer - listen for event, data change, notification
+            cart, header, cart summary components
+    Actual data - 0 - 1 - 2 
+    Observable - Subject - notify the observer on data change
+    $ at the end is written for onservable.. convention
+-->
+
+<div>
+
+    <a routerLink="/" class="button" routerLinkActive="success"
+                        [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/products" class="button" routerLinkActive="success">Products</a>
+    <a routerLink="/cart" class="button" routerLinkActive="success">Cart</a>
+    <a routerLink="/about" class="button" routerLinkActive="success">About</a>
+    <a routerLink="/contact" class="button" routerLinkActive="success">Contact</a>
+    <a routerLink="/auth/login" class="button" routerLinkActive="success">Login</a>
+
+    <span appHighlight backgroundColor="yellow" (highlightEvent)="highlightStatus($event)">{{count}} items</span>
+    <!-- async pipe automatically subscribe-->
+    <span>Amout: {{amount$ | async}}</span>
+</div>

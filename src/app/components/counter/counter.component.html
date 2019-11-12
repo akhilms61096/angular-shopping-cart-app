@@ -1,0 +1,41 @@
+<h4>Counter</h4>
+
+<!--
+    {{expression}} - interpolation, angular watch data change, eval the expression and then display the result
+
+    (eventName) = "expression" - event binding , $event is a keyword
+
+    [propertyName] = "expression" - property binding, html attributes
+
+    {{}} - it evaluates and converts to string
+
+    [] - preserves the dataType
+
+    * - structural directive - can add or delete in dom, eg - *ngIf
+
+    ngClass - attribute directive, but manipulate the attributes, class
+
+
+-->
+<div (click)="divClick($event)" [ngClass]="{highlightColor: highlight}" 
+     (mouseenter)="highlight=true" 
+     (mouseleave)="highlight=false">
+
+    <p>Counter = {{counter}}</p>
+    <p>Counter + 1 = {{counter + 1}}</p>
+    <button (click)="increment($event)">+1</button>
+    <button (click)="incrementBy(2)">+2</button>
+    <button (click)="counter = counter - 1">-1</button>
+    <input [value]="counter"/>
+    <input [value]="counter * 10"/>
+    <button [disabled]="counter % 2 == 0">Disabled</button>
+
+</div>
+
+<div>
+    <p *ngIf="counter%2==0">New Counter {{counter}}</p>
+</div>
+
+<button (click)="resetValue()">
+    Reset
+</button>

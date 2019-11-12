@@ -1,0 +1,51 @@
+<!--
+    # - template variable reference, scoped only to this component
+    *ngIf..else - ng 4 onwards
+    *ngSwitch - 
+    angular discourages the use of id as you can manipulate other component using id breaking the single responsibility concept
+-->
+
+<!-- later used for else part -->
+<ng-template #oddNumber>
+    <p>Odd number</p>
+</ng-template>
+
+
+<!-- countrycode is dom element of input tag-->
+<input #countryCode >
+<p #para1 >  <!-- para1 is dom element -->
+    Para 1
+</p>
+
+<div #div1>
+
+</div>
+
+<button (click)="para1.textContent = countryCode.textContent; div1.textContent = countryCode.value;">
+    Set Value
+</button>
+
+<p *ngIf = "counter%2==0 else oddNumber">
+    Even Number
+</p>
+
+<div [ngSwitch]="country">
+    <div *ngSwitchCase="'IN'">
+        From India
+    </div>
+    <div *ngSwitchCase="'USA'">
+            From USA
+    </div>
+    <div *ngSwitchDefault>
+        From Unknown
+    </div>
+</div>
+
+<button (click)="setCountry('USA')">USA</button>
+<button (click)="setCountry('IN')">IN</button>
+<button (click)="setCountry('UK')">UK</button>
+
+
+<!-- Reusuable code-->
+<app-counter [(counter)]="counter">
+</app-counter>

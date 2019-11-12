@@ -1,0 +1,26 @@
+<h2>Product List</h2>
+
+<a routerLink="/products" class="button">List</a>  <!-- / indicates absolute path -->
+<a routerLink="create" class="button">Create</a>   <!-- create is relative path, so it will be /products/create -->
+<a routerLink="search" class="button">Search</a>
+
+<p>Select the filter for price</p>
+<input [(ngModel)]="price" type="number">
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Ops</th>
+    </tr>
+    <tr *ngFor="let product of (products$ | async | filter: 'price': 'gt': price)">
+        <td>
+            <a [routerLink]="['/', 'products', 'edit', product.id]">{{product.name}}</a>
+        </td>
+        <td>{{product.price}}</td>
+        <td>
+            <button (click)="deleteProduct(product.id)">Del</button>
+            <button (click)="addToCart(product)">+Cart</button>
+        </td>
+    </tr>
+</table>

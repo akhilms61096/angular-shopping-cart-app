@@ -1,0 +1,26 @@
+<h2>Cart</h2>
+
+<button (click)="addItem()">Add Item</button>
+<button (click)="empty()">Empty</button>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Ops</th>
+    </tr>
+
+    <tr *ngFor = "let item of (items$ | async)">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.qty}}</td>
+        <td>
+            <button (click)="removeItem(item.id)">X</button>
+            <button (click)="updateQty(item.id, item.qty)"></button>
+            <!-- <button (click)=""></button> -->
+        </td>
+    </tr>
+</table>
