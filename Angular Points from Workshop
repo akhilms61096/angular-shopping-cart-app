@@ -1,0 +1,78 @@
+Transpiler
+Multi-page app and single page application
+Angular extends HTML
+Declaring variable using “let” or “const” limits the scope to block
+Declaring variable using “var” makes it to global scope
+No overloading in JS
+Arrow operator is like lambda function
+Who invokes the method owns the “this” in the context
+Arrow operator helps to use “this” in callback to point to object which invokes the method
+Annotation adds meta information to help at runtime
+package.json -> dependencies
+angular.json -> build information
+runtime.js -> web pack loader. Contains web pack utilities that are needed to load other files
+vendor.js -> node modules
+main.js -> source code bundled
+Property binding -> [propertyName] = “expression” -> for html attributes - it is one-way binding
+Event binding -> (eventName) = “expression”
+Data binding -> {{ exp}} 
+{{ expression}} -> means interpolation. Angular watches the data changes and evaluates the expression
+Event bubbling
+{{ }} -> evaluate the expression, then convert it to toString()
+[ ] -> preserve the datatype after evaluating expression
+* -> structural directive, add/delete DOM elements
+Attribute directive - manipulates the attributes of the element
+Two way binding - [( )]
+ngIf and ngClass is from CommonModule which is already included in BrowserModule
+ngModel is a directive from FormsModule -> two way binding
+? - while declaring variable means the value is optional
+# - template variable reference - it is the Dom element of the tag where it is used - it is scoped to only this component.
+It is like id - but id shouldn’t be used, coz in the same page, from one component, another component’s Dom element can be changed
+*ngIf..else -> from ng 4 onwards
+Ng-template: anything inside ng-template won’t be displayed just like that
+Input decorator - accept input from immediate parent component for the field
+Properties which are input from parent should be set or modified from parent itself and not child for safer mechanism
+Output decorator - is used for child to parent component communication 
+It is basically a () event binding - emit the event with value as $event
+It takes event emitter type
+For 2 way binding between parent and child components, the output variable should be input variable + “Change”.
+Otherwise, we will have to specifically add the (event name) = “variable = $event” 
+exports in @NgModule makes the components public to other modules - it is subset of components in declarations
+Pipes - classes used for formatting using the | and the class name
+It is also used for sorting, filtering
+Services in angular is used for:
+Business logic
+Communication with web service
+Help unrelated or sibling components to share data without input/output
+Contains the component state
+Dependency injection is done by putting the service class in the constructor argument by also specifying the access specifier
+Specifying the access specifier along with the variable in the constructor argument treats it as a member of the class
+Observer - listen for event, data change, notification
+Actual data
+Observable - Subject - notify the Observable for data change
+It is a wrapper around the actual data
+The naming convention is variable$
+Subscribe method is called when next() is called
+BehaviorSubject - keeps hold of last known value - if anyone subscribes, immediately calls the publish of the last known value
+Putting the service class name in the providers of @Component makes the service instance private for that component i.e not a singleton instance
+Query parameters is used for server side call
+Matrix url is used in front end navigation
+router-outlet -> placeholder for loading the router components - it is from the RouterModule
+Href in <a> makes a call to the server side. So, for the single page app -> use routerLink instead of href
+Use routerLink property to provide routing to different pages inside <a> tag
+Use routerLinkActive property to show the active tab
+If a component from one module is under routing, then it need not be under exports to be used by app module
+Lazy loading
+Async - does the subscribe and unsubscribe automatically when the component is created and destroyed
+If async is not used, then we have to unsubscribe manually.
+Api endpoint is provided in environment.ts
+HttpClient is used to make http calls
+#variable = “ngModel” in a tag will provide the reference to that particular ngModel instance. This reference can be used to access attributes of ngModel like valid, invalid, touched, pristine
+Custom directives - 
+no template for directives
+Directives are hosted on elements
+<p directiveName> -> p is the host element
+Directive can receive events when on host elements
+Whenever a directive is used on an element, a new instance of it is created i.e the same directive may be used on many elements, but those many instances of the directive are created corresponding to each host element.
+The lifecycle of a directive is dependent on the lifecycle of the host element i.e when host element is created, directive instance is created and when the host is destroyed, the directive instance is also destroyed
+NativeElement is actual DOM element
